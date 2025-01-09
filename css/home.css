@@ -1,0 +1,27 @@
+.container {
+  text-align: center;
+  margin-bottom: 100px;
+}
+
+.logo {
+  margin-bottom: 100px;
+}
+
+.title {
+  font-size: 20px;
+  margin-bottom: 2px;
+}
+
+.description {
+  font-size: 14px;
+  color: var(--foreground-muted);
+  margin-bottom: 32px;
+  max-width: 311px;
+  text-align: center;
+}
+
+.input {
+  width: 100%;
+  padding: 10px;
+  border-radius: 10px;
+}
