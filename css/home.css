@@ -21,7 +21,40 @@
 }
 
 .input {
-  width: 100%;
+  width: 300px;
   padding: 10px;
   border-radius: 10px;
+}
+
+.smart-search-container {
+  position: relative;
+}
+
+.smart-search-cities {
+  width: 300px;
+  max-height: 150px;
+  background-color: var(--input-background);
+  border-radius: 10px;
+
+  overflow: scroll;
+  position: absolute;
+  top: calc(100% + 10px);
+
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.smart-search-cities.active {
+  padding: 10px;
+}
+
+.smart-search-city {
+  color: var(--input-foreground);
+  font-size: 0.9rem;
+  text-align: left;
+}
+
+.smart-search-city.focused {
+  color: var(--foreground);
 }
