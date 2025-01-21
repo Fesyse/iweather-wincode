@@ -14,7 +14,7 @@
 	background-color: var(--background-section);
 	display: flex;
 	flex-direction: column;
-	justify-content: space-between;
+	gap: 20px;
 }
 .main-card.bg {
 	background: no-repeat url("/img/evening.png");

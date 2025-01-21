@@ -75,25 +75,61 @@ const generateWeather = async () => {
 	condition.textContent = current.condition.text;
 };
 
+// Генерация последующих дней
+
+const getShortDayNameByDate = (date) => {
+	const shortDaysOfWeek = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+
+	return shortDaysOfWeek[date.getDay()];
+};
+
+const futureDaysWeather = document.querySelector(".future-days-weather");
+
+const typeOfDay = {
+	// 1255: "", // rainWithSnow
+	// 	// 1279: "./img/svg/future-days-weather/rain-thunder.svg", // snowWithThunder
+	// 1213: "./img/svg/future-days-weather/snow.svg", // snow
+
+	1276: "./img/svg/future-days-weather/rain-thunder.svg", // rainWithThunder
+	1240: "./img/svg/future-days-weather/rain.svg", // rain
+	1198: "./img/svg/future-days-weather/rain.svg", // lightFreezingRain
+	1006: "./img/svg/future-days-weather/cloudy.svg", // cloudy
+	1000: "./img/svg/future-days-weather/clear.svg", //sunny
+	1003: "./img/svg/future-days-weather/few-clouds.svg", //Partly cloudy
+};
+
 const generateFutureDays = async () => {
-	const currentDateString = transformLocaleDateString(
-		new Date().toLocaleDateString()
-	);
+	for (let i = 1; i < 6; i++) {
+		const afterDate = new Date();
+		afterDate.setDate(afterDate.getDate() + 14 + i);
+		const afterDateString = transformLocaleDateString(
+			afterDate.toLocaleDateString()
+		);
 
-	const afterDate = new Date();
-	afterDate.setDate(afterDate.getDate() + 5);
-	const afterDateString = transformLocaleDateString(
-		afterDate.toLocaleDateString()
-	);
+		const futureDayResponse = await fetch(
+			`${apiBaseUrl}/future.json?q=${city}&dt=${afterDateString}&key=${apiKey}`
+		);
 
-	const futureDaysResponse = await fetch(
-		`${apiBaseUrl}/history.json?dt=${currentDateString}&end_dt=${afterDateString}&q=${city}&key=${apiKey}`
-	);
-	const futureDaysData = await futureDaysResponse.json();
+		const futureDayData = await futureDayResponse.json();
+		const futureDay = futureDayData.forecast.forecastday[0].day;
+		const currentFutureDayDate = new Date(afterDateString);
 
-	const futureDays = futureDaysData.forecast.forecastday;
+		const codeOfDay = futureDay.condition.code;
 
-	console.log(futureDays);
+		const shortDayName = getShortDayNameByDate(currentFutureDayDate);
+		const futureDayTemplate = `<li class="day">
+							<h4 class="day-name">${shortDayName}</h4>
+							<img
+								src=${typeOfDay[codeOfDay]}
+								alt="clear"
+								width="56"
+								height="56"
+							/>
+							<p class="day-max-temperature">${futureDay.maxtemp_c}</p>
+							<p class="day-min-temperature">${futureDay.mintemp_c}</p>
+						</li>`;
+		futureDaysWeather.insertAdjacentHTML("beforeend", futureDayTemplate);
+	}
 };
 
 generateWeather();
