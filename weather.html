@@ -7,6 +7,7 @@
 		<link rel="stylesheet" href="css/style.css" />
 		<link rel="stylesheet" href="css/weather.css" />
 		<link rel="stylesheet" href="css/detail-weather.css" />
+		<link rel="stylesheet" href="css/future-days-weather.css" />
 
 		<link
 			href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Geist:wght@100..900&family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap"
@@ -17,7 +18,7 @@
 	<body>
 		<main>
 			<div class="section">
-				<div class="main-card bg">
+				<div class="main-card card bg">
 					<div>
 						<p class="location">London, UK</p>
 						<p class="date">Segunda-feira, 15 de maio de 2023</p>
@@ -45,7 +46,7 @@
 						<ul class="detail-weather-list">
 							<li class="detail-weather-item">
 								<span class="detail-weather-span"
-									><img src="img/svg/detail-weather/01.svg"
+									><img src="img/svg/detail-weather/04.svg"
 								/></span>
 								<span class="detail-weather-span">Минимальная температура</span>
 								<span class="detail-weather-span detail-weather-min-temp"
@@ -63,7 +64,7 @@
 							</li>
 							<li class="detail-weather-item">
 								<span class="detail-weather-span"
-									><img src="img/svg/detail-weather/03.svg"
+									><img src="img/svg/detail-weather/01.svg"
 								/></span>
 								<span class="detail-weather-span">Скорость ветра</span>
 								<span class="detail-weather-span detail-weather-wind-kmh"
@@ -73,7 +74,7 @@
 
 							<li class="detail-weather-item">
 								<span class="detail-weather-span"
-									><img src="img/svg/detail-weather/04.svg"
+									><img src="img/svg/detail-weather/03.svg"
 								/></span>
 								<span class="detail-weather-span">Влажность</span>
 								<span class="detail-weather-span detail-weather-humidity"
@@ -90,6 +91,64 @@
 						</ul>
 					</div>
 				</div>
+
+				<ul class="main-card future-days-weather">
+					<li class="day">
+						<h4 class="day-name">Wed</h4>
+						<img
+							src="./img/svg/future-days-weather/clear.svg"
+							alt="clear"
+							width="56"
+							height="56"
+						/>
+						<p class="day-max-temperature">32ºc</p>
+						<p class="day-min-temperature">26ºc</p>
+					</li>
+					<li class="day">
+						<h4 class="day-name">Wed</h4>
+						<img
+							src="./img/svg/future-days-weather/clear.svg"
+							alt="clear"
+							width="56"
+							height="56"
+						/>
+						<p class="day-max-temperature">32ºc</p>
+						<p class="day-min-temperature">26ºc</p>
+					</li>
+					<li class="day">
+						<h4 class="day-name">Wed</h4>
+						<img
+							src="./img/svg/future-days-weather/clear.svg"
+							alt="clear"
+							width="56"
+							height="56"
+						/>
+						<p class="day-max-temperature">32ºc</p>
+						<p class="day-min-temperature">26ºc</p>
+					</li>
+					<li class="day">
+						<h4 class="day-name">Wed</h4>
+						<img
+							src="./img/svg/future-days-weather/clear.svg"
+							alt="clear"
+							width="56"
+							height="56"
+						/>
+						<p class="day-max-temperature">32ºc</p>
+						<p class="day-min-temperature">26ºc</p>
+					</li>
+					<li class="day">
+						<h4 class="day-name">Wed</h4>
+						<img
+							src="./img/svg/future-days-weather/clear.svg"
+							alt="clear"
+							width="56"
+							height="56"
+						/>
+						<p class="day-max-temperature">32ºc</p>
+						<p class="day-min-temperature">26ºc</p>
+					</li>
+				</ul>
 			</div>
 		</main>
 		<script src="weather.js"></script>

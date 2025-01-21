@@ -1,0 +1,27 @@
+.future-days-weather {
+  flex-direction: row;
+}
+
+.day {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0 5px;
+  flex: 20% 0 1;
+}
+
+.day-name,
+.day-max-temperature,
+.day-min-temperature {
+  font-size: 14px;
+  line-height: 140%;
+}
+
+.day-name,
+.day-max-temperature {
+  font-weight: bold;
+}
+
+.day-min-temperature {
+  color: var(--foreground-muted);
+}

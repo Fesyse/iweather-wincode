@@ -12,6 +12,16 @@ const minTemperature = document.querySelector(".temperature-min");
 const maxTemperature = document.querySelector(".temperature-max");
 const condition = document.querySelector(".condition");
 
+function transformLocaleDateString(dateString) {
+	const splittedDateString = dateString.split(".");
+
+	const year = splittedDateString[2];
+	const month = splittedDateString[1];
+	const day = splittedDateString[0];
+
+	return `${year}-${month}-${day}`;
+}
+
 // Detail Weather elements
 
 const detailWeatherMinTemp = document.querySelector(".detail-weather-min-temp");
@@ -31,6 +41,7 @@ const getDetailWeather = async ({ forecast, current }) => {
 	const windKph = current.wind_kph;
 	const airHudimiti = current.humidity;
 	const uvIndex = current.uv;
+
 	return { dailyChanceOfRain, windKph, airHudimiti, uvIndex, minTemp };
 };
 
@@ -64,4 +75,26 @@ const generateWeather = async () => {
 	condition.textContent = current.condition.text;
 };
 
+const generateFutureDays = async () => {
+	const currentDateString = transformLocaleDateString(
+		new Date().toLocaleDateString()
+	);
+
+	const afterDate = new Date();
+	afterDate.setDate(afterDate.getDate() + 5);
+	const afterDateString = transformLocaleDateString(
+		afterDate.toLocaleDateString()
+	);
+
+	const futureDaysResponse = await fetch(
+		`${apiBaseUrl}/history.json?dt=${currentDateString}&end_dt=${afterDateString}&q=${city}&key=${apiKey}`
+	);
+	const futureDaysData = await futureDaysResponse.json();
+
+	const futureDays = futureDaysData.forecast.forecastday;
+
+	console.log(futureDays);
+};
+
 generateWeather();
+generateFutureDays();

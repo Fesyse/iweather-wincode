@@ -20,6 +20,14 @@
 	background: no-repeat url("/img/evening.png");
 	background-size: cover;
 }
+.card {
+	width: 335px;
+	min-height: 304px;
+}
+.main-card.bg {
+	background: no-repeat url("/img/evening.png");
+	background-size: cover;
+}
 
 .location {
 	color: #fff;
